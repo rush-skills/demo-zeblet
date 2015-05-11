@@ -1,0 +1,4 @@
+<%= simple_form_for @clinic, :url => update_doctor_to_clinic_path(@clinic), :method => :post do |f| %>
+	<%= f.input :doctor_id,collection: @doctors%>
+	<%= f.submit "Add Doctor" %>
+<% end %>

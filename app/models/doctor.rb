@@ -29,4 +29,8 @@ class Doctor < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :clinic
+
+  def to_s
+  	self.name
+  end
 end

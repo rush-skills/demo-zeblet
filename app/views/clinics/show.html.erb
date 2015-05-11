@@ -10,7 +10,18 @@
   <%= @clinic.address %>
 </p>
 
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=13&markers=#{@clinic.latitude}%2C#{@clinic.longitude}" %>
+<p>
+  <strong>Doctors:</strong>
+  <ul>
+  <% @clinic.doctors.each do |doctor| %>
+  <li><%= link_to doctor, doctor %> (<%= link_to "remove", remove_doctor_from_clinic_path(@clinic,doctor) %>)</li>
+  <% end %>
+  </ul>
+</p>
 
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=13&markers=#{@clinic.latitude}%2C#{@clinic.longitude}" %>
+<br>
+<%= link_to 'Add Doctor', add_doctor_to_clinic_path(@clinic), :class => "btn btn-success" %>
+<br>
 <%= link_to 'Edit', edit_clinic_path(@clinic) %> |
 <%= link_to 'Back', clinics_path %>

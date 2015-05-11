@@ -15,4 +15,9 @@ class Clinic < ActiveRecord::Base
 	has_many :doctors
 	geocoded_by :address
 	after_validation :geocode, :if => :address_changed?
+	attr_accessor :doctor_id
+
+	def to_s
+		self.name
+	end
 end

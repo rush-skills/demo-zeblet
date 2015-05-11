@@ -1,5 +1,5 @@
 class ClinicsController < ApplicationController
-  before_action :set_clinic, only: [:show, :edit, :update, :destroy]
+  before_action :set_clinic, only: [:show, :edit, :update, :destroy, :add_doctor, :update_doctor, :remove_doctor]
   # before_action :authenticate_user
   # GET /clinics
   # GET /clinics.json
@@ -75,6 +75,23 @@ class ClinicsController < ApplicationController
     end
   end
 
+  def add_doctor
+    @doctors = Doctor.all
+  end
+
+  def update_doctor
+    d = Doctor.find(clinic_doctor_params[:doctor_id])
+    d.clinic = @clinic
+    d.save!
+    redirect_to @clinic
+  end
+
+  def remove_doctor
+    d = Doctor.find(params[:did])
+    d.clinic = nil
+    d.save!
+    redirect_to @clinic
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_clinic
@@ -84,5 +101,9 @@ class ClinicsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def clinic_params
       params.require(:clinic).permit(:name, :address)
+    end
+
+    def clinic_doctor_params
+      params.require(:clinic).permit(:doctor_id)
     end
 end
