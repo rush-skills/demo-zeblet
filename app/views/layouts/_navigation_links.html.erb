@@ -4,8 +4,12 @@
 <% if user_signed_in? %>
   <li><%= link_to 'Edit account', edit_user_registration_path %></li>
   <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+
+  <li><%= link_to 'My Bookings', user_bookings_path %></li>
 <% elsif doctor_signed_in? %>
-  <li><%= link_to 'My clinic', clinics_path %></li>
+  <li><%= link_to 'My Clinic', clinics_path %></li>
+
+  <li><%= link_to 'My Bookings', doctor_bookings_path %></li>
   <li><%= link_to 'Edit account', edit_doctor_registration_path %></li>
   <li><%= link_to 'Sign out', destroy_doctor_session_path, :method=>'delete' %></li>
 <% else %>

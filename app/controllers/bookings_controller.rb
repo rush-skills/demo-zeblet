@@ -1,10 +1,19 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, only: :index_user
+  before_action :authenticate_doctor!, only: :index_doctor
   # GET /bookings
   # GET /bookings.json
   def index
     @bookings = Booking.all
+  end
+
+  def index_user
+    @bookings = current_user.bookings
+  end
+
+  def index_doctor
+    @bookings = current_doctor.bookings
   end
 
   # GET /bookings/1
