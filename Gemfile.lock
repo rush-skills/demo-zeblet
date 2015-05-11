@@ -80,6 +80,7 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.7)
     execjs (2.5.2)
+    geocoder (1.2.8)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     high_voltage (2.3.0)
@@ -104,6 +105,7 @@ GEM
     mini_portile (0.6.2)
     minitest (5.6.1)
     multi_json (1.11.0)
+    mysql2 (0.3.18)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
@@ -220,10 +222,12 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   devise_invitable
+  geocoder
   high_voltage
   hub
   jbuilder (~> 2.0)
   jquery-rails
+  mysql2
   pg
   pry-rails
   pry-rescue

@@ -11,7 +11,11 @@ class ClinicsController < ApplicationController
         redirect_to new_clinic_path
       end
     end
-    @clinics = Clinic.all
+    if params[:search].present?
+      @clinics = Clinic.near(params[:search], 50)
+    else
+      @clinics = Clinic.all
+    end
   end
 
   # GET /clinics/1
