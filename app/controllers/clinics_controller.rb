@@ -12,7 +12,7 @@ class ClinicsController < ApplicationController
       end
     end
     if params[:search].present?
-      @clinics = Clinic.near(params[:search], 50)
+      @clinics = Clinic.near(params[:search], 10)
     else
       @clinics = Clinic.all
     end

@@ -10,5 +10,7 @@
   <%= @clinic.address %>
 </p>
 
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=13&markers=#{@clinic.latitude}%2C#{@clinic.longitude}" %>
+
 <%= link_to 'Edit', edit_clinic_path(@clinic) %> |
 <%= link_to 'Back', clinics_path %>

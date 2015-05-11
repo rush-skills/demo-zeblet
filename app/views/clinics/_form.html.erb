@@ -1,5 +1,7 @@
 <%= simple_form_for(@clinic) do |f| %>
   <%= f.error_notification %>
+  
+  <div id="gmaps-error"></div>
 
   <div class="form-inputs">
     <%= f.input :name %>
@@ -10,3 +12,18 @@
     <%= f.button :submit %>
   </div>
 <% end %>
+<script type="text/javascript">
+  
+jQuery(function() {
+  var completer;
+
+  completer = new GmapsCompleter({
+    inputField: '#clinic_address',
+    errorField: '#gmaps-error'
+  });
+
+  completer.autoCompleteInit({
+    country: "in"
+  });
+});
+</script>
