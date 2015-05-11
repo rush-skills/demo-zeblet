@@ -1,9 +1,16 @@
 class ClinicsController < ApplicationController
   before_action :set_clinic, only: [:show, :edit, :update, :destroy]
-
+  # before_action :authenticate_user
   # GET /clinics
   # GET /clinics.json
   def index
+    if doctor_signed_in?
+      if current_doctor.clinic
+        redirect_to current_doctor.clinic
+      else
+        redirect_to new_clinic_path
+      end
+    end
     @clinics = Clinic.all
   end
 
@@ -25,7 +32,10 @@ class ClinicsController < ApplicationController
   # POST /clinics.json
   def create
     @clinic = Clinic.new(clinic_params)
-
+    if doctor_signed_in?
+      current_doctor.clinic = @clinic
+      current_doctor.save!
+    end
     respond_to do |format|
       if @clinic.save
         format.html { redirect_to @clinic, notice: 'Clinic was successfully created.' }
