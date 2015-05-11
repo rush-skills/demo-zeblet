@@ -10,6 +10,8 @@ gem 'gmaps-autocomplete-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'mysql2'
 gem 'geocoder'
+gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
